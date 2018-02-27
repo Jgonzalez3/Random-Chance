@@ -12,18 +12,19 @@
 <script>
     function RandomChance(quarter,goal){
         var jackpot = 0;
-        for(var games = quarter; games>=0; games--){
-            console.log(games);
-            if(games == 0){ //stops game if quarters = 0
-                quarter = games;
+        for(var games = quarter; games>0; games--){
+            quarter--;
+            console.log(quarter);
+            if(quarter == 0){ //stops game if quarters = 0
                 break;
             }
             var odds = Math.floor((Math.random() * 100)+1);
+            console.log("odds "+odds);
             if(odds == 100){
                 jackpot = Math.floor(Math.random() * (100-50) + 50);
-                games = jackpot+games-1;
+                games = jackpot+quarter;
                 quarter = games;
-                console.log(jackpot); //logs whenever user hits jackpot
+                console.log("jackpot "+jackpot); //logs whenever user hits jackpot minus one quarter for quarter used.
             }
             if(quarter >= goal){
                 break;
