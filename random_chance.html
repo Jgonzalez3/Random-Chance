@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Random Chance</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function RandomChance(quarter,goal){
+        var jackpot = 0;
+        for(var games = quarter; games>=0; games--){
+            console.log(games);
+            if(games == 0){ //stops game if quarters = 0
+                quarter = games;
+                break;
+            }
+            var odds = Math.floor((Math.random() * 100)+1);
+            if(odds == 100){
+                jackpot = Math.floor(Math.random() * (100-50) + 50);
+                games = jackpot+games-1;
+                quarter = games;
+                console.log(jackpot); //logs whenever user hits jackpot
+            }
+            if(quarter >= goal){
+                break;
+            }
+        }
+        return quarter;
+    }
+</script>
+</html>
